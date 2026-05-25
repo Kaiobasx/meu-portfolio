@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# 🚀 Portefólio Interativo | Kaio Developer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Um portefólio pessoal com foco em UI/UX Premium, estética *lo-fi programmer* e animações cinemáticas.
 
-## Available Scripts
+![Status do Projeto](https://img.shields.io/badge/Status-Em_Desenvolvimento-8b5cf6?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js_15-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-In the project directory, you can run:
+## 📖 Sobre o Projeto
 
-### `npm start`
+Este projeto é a minha montra digital como Engenheiro Front-end e UX Designer. Desenvolvido com as tecnologias mais recentes do ecossistema React, o portefólio destaca-se não apenas por listar projetos, mas por oferecer uma experiência interativa e imersiva. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O design combina um *Dark Mode* profundo com toques de luzes neon (roxo e ciano), abusando do *glassmorphism* (efeito de vidro fosco) para criar uma interface limpa, vetorial e moderna.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✨ Funcionalidades Principais
 
-### `npm test`
+* 🎬 **Hero Section Cinemática:** Uma introdução imersiva (com vídeo 16:9) que transita de forma fluida para a interface principal, utilizando uma narrativa visual focada na cultura *developer*.
+* 🧩 **Arquitetura de Projetos Dinâmica:** Sistema de listagem de projetos extraídos e categorizados, com renderização condicional de destaques.
+* 🤝 **Destaque de Parcerias:** Flag especial (`isCreativeImob`) que aplica estilos únicos (badges e brilhos neon) a projetos desenvolvidos em colaboração com a CreativeImob.
+* 🎨 **Filtros com Glassmorphism:** Navegação de categorias de projetos utilizando efeitos de vidro translúcido para um acabamento *premium*.
+* 🧹 **Filtro Inteligente:** Omissão automática de repositórios marcados como "Template" para garantir uma montra apenas com projetos finais.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Tecnologias Utilizadas
 
-### `npm run build`
+* **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+* **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
+* **Estilização:** [Tailwind CSS](https://tailwindcss.com/) + CSS Modules (Variáveis e animações customizadas)
+* **Animações:** CSS Keyframes e Transitions (Preparado para integração com Framer Motion)
+* **Ícones:** [Phosphor Icons](https://phosphoricons.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📂 Estrutura de Pastas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+A arquitetura do projeto segue o princípio de separação clara de responsabilidades:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```text
+/src
+ ├── /app          # Rotas principais do Next.js (App Router)
+ ├── /components   # Componentes isolados (Hero, Projects, Navbar, etc.)
+ ├── /data         # Ficheiros estáticos e estruturas de dados (ex: projects.ts)
+ ├── /hooks        # Custom hooks (ex: useReveal para animações de scroll)
+ └── /styles       # Ficheiros globais de CSS e tokens de design
+🚀 Como Executar Localmente
+Clona o repositório:
 
-### `npm run eject`
+Bash
+git clone [https://github.com/Kaiobasx/meu-portfolio.git](https://github.com/Kaiobasx/meu-portfolio.git)
+Navega até à pasta do projeto:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Bash
+cd meu-portfolio
+Instala as dependências:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Bash
+npm install
+# ou
+yarn install
+Inicia o servidor de desenvolvimento:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Bash
+npm run dev
+# ou
+yarn dev
+Abre no navegador:
+Acede a http://localhost:3000 para ver o resultado.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+📞 Contacto
+GitHub: @Kaiobasx
 
-## Learn More
+LinkedIn: https://www.linkedin.com/in/kaio-oliveira-/
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Email: kaiooliveira528@gmail.com
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+⌨️ Desenvolvido com dedicação e muito café por Kaio.
