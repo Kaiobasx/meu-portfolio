@@ -20,7 +20,7 @@ export const PROJECTS: Project[] = [
       "Site institucional para a JRHX Imobiliária, especializada em gestão de patrimônio, consultoria e locação de imóveis desde 1992.",
     longDescription:
       "Desenvolvimento do site institucional da JRHX Imobiliária, empresa fundada em 1992 que atua com gestão de patrimônio, consultoria, compra, venda e locação de imóveis. Interface profissional com foco em conversão de leads e apresentação de portfólio de imóveis.",
-    techStack: ["HTML", "CSS", "JavaScript", "Landing Page"],
+    techStack: ["React", "CSS", "JavaScript", "Landing Page"],
     category: "featured",
     liveUrl: "https://jrhx.com.br",
     githubUrl: "https://github.com/creativeimob-tech/jrhx",
@@ -35,7 +35,7 @@ export const PROJECTS: Project[] = [
       "Site para imobiliária de alto padrão especializada na região dos Jardins, São Paulo.",
     longDescription:
       "Desenvolvimento do site da Maria Martinatti, imobiliária premium focada em imóveis de alto padrão na região dos Jardins e arredores em São Paulo. Design sofisticado e elegante que reflete o posicionamento da marca no mercado de luxo.",
-    techStack: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    techStack: ["React", "CSS", "JavaScript", "Responsive Design"],
     category: "featured",
     liveUrl: "https://mariamartinatti.com.br",
     githubUrl: "https://github.com/creativeimob-tech/maria-martinatti",
@@ -50,7 +50,7 @@ export const PROJECTS: Project[] = [
       "Landing page de alta conversão para o segmento imobiliário, focada em captação de leads e performance.",
     longDescription:
       "Landing page desenvolvida para o projeto Nitro da CreativeImob, voltada para o setor imobiliário com foco em captação de leads, performance e conversão. Design moderno otimizado para campanhas de tráfego pago (Google Ads e Meta Ads).",
-    techStack: ["HTML", "CSS", "JavaScript", "SEO", "Google Ads"],
+    techStack: ["React", "CSS", "JavaScript", "SEO", "Google Ads"],
     category: "featured",
     liveUrl: null,
     githubUrl: "https://github.com/creativeimob-tech/nitro",
@@ -65,9 +65,9 @@ export const PROJECTS: Project[] = [
       "Site institucional para incorporadora de empreendimentos de médio e alto padrão.",
     longDescription:
       "Desenvolvimento do site para a WTP Incorporadora, empresa focada em empreendimentos de médio e alto padrão. Interface profissional com galeria de empreendimentos, informações detalhadas e sistema de captação de leads.",
-    techStack: ["HTML", "CSS", "JavaScript", "Landing Page"],
+    techStack: ["React", "CSS", "JavaScript", "Landing Page"],
     category: "web",
-    liveUrl: null,
+    liveUrl: "https://wtpincorporadora.com.br/",
     githubUrl: "https://github.com/creativeimob-tech/wtp",
     image:
       "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80",
@@ -80,9 +80,9 @@ export const PROJECTS: Project[] = [
       "Landing page para a marca premium RE/MAX Collection, segmento de imóveis de luxo.",
     longDescription:
       "Desenvolvimento da landing page para a RE/MAX Collection, marca especializada da rede RE/MAX voltada para o mercado imobiliário de luxo. Design elegante e sofisticado que transmite exclusividade e atendimento premium.",
-    techStack: ["HTML", "CSS", "JavaScript", "Responsive Design"],
+    techStack: ["React", "CSS", "JavaScript", "Responsive Design"],
     category: "web",
-    liveUrl: null,
+    liveUrl: "https://remax-colection.vercel.app/",
     githubUrl: "https://github.com/creativeimob-tech/remax-colection",
     image:
       "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80",
@@ -95,7 +95,7 @@ export const PROJECTS: Project[] = [
       "Site institucional para imobiliária Montreal, com foco em imóveis de médio e alto padrão.",
     longDescription:
       "Desenvolvimento do site da imobiliária Montreal, empresa do setor imobiliário com atuação em São Paulo. Interface moderna com listagem de imóveis, sistema de busca e formulários de contato otimizados para conversão.",
-    techStack: ["HTML", "CSS", "JavaScript", "Landing Page"],
+    techStack: ["React", "CSS", "JavaScript", "Landing Page"],
     category: "web",
     liveUrl: null,
     githubUrl: "https://github.com/creativeimob-tech/montreal",
@@ -110,9 +110,9 @@ export const PROJECTS: Project[] = [
       "Ferramenta de moodboard para organização de referências visuais e alinhamento de identidade de projetos imobiliários.",
     longDescription:
       "Plataforma de criação de moodboards desenvolvida para a CreativeImob, utilizada para alinhar o estilo visual de projetos imobiliários. Permite organizar referências de cores, texturas, tipografia e materiais antes da execução dos projetos.",
-    techStack: ["HTML", "CSS", "JavaScript", "UI/UX Design"],
+    techStack: ["React", "CSS", "JavaScript", "UI/UX Design"],
     category: "web",
-    liveUrl: null,
+    liveUrl: "https://moodboard-creative.vercel.app/",
     githubUrl: "https://github.com/creativeimob-tech/Moodboard-creative",
     image:
       "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&q=80",
@@ -127,7 +127,7 @@ export const PROJECTS: Project[] = [
       "Plataforma educacional interativa que combina aprendizado com gamificação.",
     longDescription:
       "Plataforma de educação interativa que une aprendizado e gamificação, incentivando o desenvolvimento através de jogos e atividades dinâmicas. Projeto colaborativo com foco em experiência do usuário e engajamento educacional.",
-    techStack: ["HTML", "CSS", "JavaScript", "Gamificação"],
+    techStack: ["React", "CSS", "JavaScript", "Gamificação"],
     category: "web",
     liveUrl: null,
     githubUrl: "https://github.com/riqueov/evo-play-learn",
@@ -144,9 +144,9 @@ export const PROJECTS: Project[] = [
       "Sistema web para clínica de medicina do trabalho, com gestão de pacientes e agendamentos.",
     longDescription:
       "Aplicação web desenvolvida para uma clínica de medicina do trabalho. Inclui funcionalidades de gestão de pacientes, agendamento de consultas e exames ocupacionais, com interface intuitiva e foco na produtividade do atendimento.",
-    techStack: ["HTML", "CSS", "JavaScript"],
+    techStack: ["React", "CSS", "JavaScript"],
     category: "web",
-    liveUrl: null,
+    liveUrl: "https://medcorpinovacao.com.br/",
     githubUrl: "https://github.com/Kaiobasx/medicina-trabalho",
     image:
       "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80",
@@ -178,7 +178,7 @@ export const PROJECTS: Project[] = [
       "Site institucional desenvolvido para um estúdio de beleza real. Interface profissional voltada para apresentação de serviços, agendamento e contato com clientes.",
     techStack: ["HTML", "CSS", "JavaScript"],
     category: "web",
-    liveUrl: null,
+    liveUrl: "https://kaiobasx.github.io/Studio-Beleza/",
     githubUrl: "https://github.com/Kaiobasx/Studio-Beleza",
     image:
       "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80",
