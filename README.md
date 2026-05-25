@@ -67,8 +67,8 @@ Acede a http://localhost:3000 para ver o resultado.
 📞 Contacto
 GitHub: @Kaiobasx
 
-LinkedIn: [O teu LinkedIn aqui]
+LinkedIn: https://www.linkedin.com/in/kaio-oliveira-/
 
-Email: [O teu email aqui]
+Email: kaiooliveira528@gmail.com
 
 ⌨️ Desenvolvido com dedicação e muito café por Kaio.
