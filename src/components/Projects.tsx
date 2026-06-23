@@ -78,9 +78,11 @@ function ProjectCard({
               <i className="ph ph-globe"></i> Demo
             </a>
           )}
-          <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-            <i className="ph ph-github-logo"></i> Código
-          </a>
+          {githubUrl && (
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+              <i className="ph ph-github-logo"></i> Código
+            </a>
+          )}
         </div>
       </div>
     </article>
@@ -104,7 +106,11 @@ export default function Projects() {
   ];
 
   return (
-    <section className="projects" id="projects">
+    <section
+      className="projects"
+      id="projects"
+      style={{ background: "var(--bg-secondary)", position: "relative" }}
+    >
       <div className="container">
         <div className="projects-header reveal" ref={headerRef}>
           <p className="section-label">Projetos</p>
@@ -132,6 +138,27 @@ export default function Projects() {
             <ProjectCard key={project.id} {...project} delay={i * 150} />
           ))}
         </div>
+      </div>
+
+      {/* ── Shape Divider: Projects → Contact (bg-primary) ── */}
+      <div className="shape-divider" aria-hidden="true">
+        <svg
+          viewBox="0 0 1440 90"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,50 C160,90 320,10 480,50 C640,90 800,15 960,50
+               C1120,85 1300,20 1440,45 L1440,90 L0,90 Z"
+            fill="#0D0F14"
+          />
+          <path
+            d="M0,65 C200,30 400,80 600,55 C800,30 1000,75 1200,50
+               C1320,35 1400,60 1440,55 L1440,90 L0,90 Z"
+            fill="#0D0F14"
+            opacity="0.5"
+          />
+        </svg>
       </div>
     </section>
   );

@@ -12,22 +12,22 @@ const SOCIAL_LINKS: SocialLink[] = [
   {
     label: "GitHub",
     icon: "ph ph-github-logo",
-    url: "https://github.com/seu-usuario",
+    url: "https://github.com/Kaiobasx",
   },
   {
     label: "LinkedIn",
     icon: "ph ph-linkedin-logo",
-    url: "https://linkedin.com/in/seu-usuario",
+    url: "https://www.linkedin.com/in/kaio-vinicius",
   },
   {
     label: "Instagram",
     icon: "ph ph-instagram-logo",
-    url: "https://instagram.com/seu-usuario",
+    url: "https://www.instagram.com/kaiobasx.dev/",
   },
   {
     label: "WhatsApp",
     icon: "ph ph-whatsapp-logo",
-    url: "https://wa.me/5500000000000",
+    url: "https://wa.me/5511976277421",
   },
 ];
 
@@ -35,7 +35,11 @@ export default function Contact() {
   const ref = useReveal();
 
   return (
-    <section className="contact" id="contact">
+    <section
+      className="contact"
+      id="contact"
+      style={{ background: "var(--bg-primary)", position: "relative" }}
+    >
       <div className="container">
         <div className="contact-wrapper reveal" ref={ref}>
           <p className="section-label">Contato</p>
@@ -59,7 +63,7 @@ export default function Contact() {
             ))}
           </div>
 
-          <a href="mailto:seuemail@exemplo.com" className="contact-email-btn">
+          <a href="mailto:kaiooliveira528@gmail.com" className="contact-email-btn">
             <i className="ph ph-envelope-simple"></i> Enviar Email
           </a>
         </div>

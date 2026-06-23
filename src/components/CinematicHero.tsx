@@ -261,6 +261,7 @@ export default function CinematicHero() {
         className={`hero cin-hero ${!isVideoVisible ? "cin-hero--visible" : ""}`}
         id="hero"
         ref={heroRef}
+        style={{ position: "relative" }}
       >
         <div className="container">
           <div className="hero-text">
@@ -315,6 +316,25 @@ export default function CinematicHero() {
             <span className="dot dot-2"></span>
             <span className="dot dot-3"></span>
           </div>
+        </div>
+
+        {/* ── Shape Divider: Multi Wave → About (bg-secondary) ── */}
+        <div className="shape-divider" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 100"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,60 C180,100 360,20 540,60 C720,100 900,20 1080,60 C1260,100 1380,40 1440,55 L1440,100 L0,100 Z"
+              fill="#12484C"
+            />
+            <path
+              d="M0,75 C200,40 400,90 600,70 C800,50 1000,90 1200,65 C1320,52 1400,72 1440,80 L1440,100 L0,100 Z"
+              fill="#12484C"
+              opacity="0.6"
+            />
+          </svg>
         </div>
       </section>
     </>

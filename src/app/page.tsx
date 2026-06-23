@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
-import CinematicHero from "@/components/CinematicHero";
+// import CinematicHero from "@/components/CinematicHero"; // ← re-enable to revert
+import PremiumHero from "@/components/PremiumHero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
@@ -10,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <CinematicHero />
+      <PremiumHero />
       <About />
       <Skills />
       <Projects />

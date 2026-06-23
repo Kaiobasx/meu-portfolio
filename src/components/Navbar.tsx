@@ -17,9 +17,10 @@ const NAV_ITEMS: NavItem[] = [
 
 /**
  * Time (ms) to wait before showing navbar.
- * Synced with CinematicHero's PHASE.INTERFACE_START + NAVBAR_DELAY.
+ * PremiumHero: 300ms (no cinematic intro).
+ * CinematicHero: use 4500 (synced with PHASE.INTERFACE_START).
  */
-const NAVBAR_REVEAL_DELAY = 4500;
+const NAVBAR_REVEAL_DELAY = 300;
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,7 +28,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("#hero");
   const [cinVisible, setCinVisible] = useState(false);
 
-  /* ── Cinematic reveal timer ── */
+  /* ── Reveal timer ── */
   useEffect(() => {
     const timer = setTimeout(() => setCinVisible(true), NAVBAR_REVEAL_DELAY);
     return () => clearTimeout(timer);
@@ -76,7 +77,7 @@ export default function Navbar() {
           className="nav-logo"
           onClick={(e) => scrollTo(e, "#hero")}
         >
-          &lt;Kaio /&gt;
+          KV
         </a>
 
         <ul className={`nav-links${menuOpen ? " open" : ""}`}>

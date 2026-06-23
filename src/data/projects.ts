@@ -6,7 +6,7 @@ export interface Project {
   techStack: string[];
   category: "featured" | "web" | "academic";
   liveUrl: string | null;
-  githubUrl: string;
+  githubUrl?: string;
   image: string;
   featured: boolean;
 }
@@ -23,9 +23,8 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "CSS", "JavaScript", "Landing Page"],
     category: "featured",
     liveUrl: "https://jrhx.com.br",
-    githubUrl: "https://github.com/creativeimob-tech/jrhx",
-    image:
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80",
+
+    image: "/JRHX.png",
     featured: true,
   },
   {
@@ -38,9 +37,8 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "CSS", "JavaScript", "Responsive Design"],
     category: "featured",
     liveUrl: "https://mariamartinatti.com.br",
-    githubUrl: "https://github.com/creativeimob-tech/maria-martinatti",
-    image:
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80",
+
+    image: "/MARIAMARTINATTI.png",
     featured: true,
   },
   {
@@ -53,7 +51,7 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "CSS", "JavaScript", "SEO", "Google Ads"],
     category: "featured",
     liveUrl: null,
-    githubUrl: "https://github.com/creativeimob-tech/nitro",
+
     image:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80",
     featured: true,
@@ -68,9 +66,8 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "CSS", "JavaScript", "Landing Page"],
     category: "web",
     liveUrl: "https://wtpincorporadora.com.br/",
-    githubUrl: "https://github.com/creativeimob-tech/wtp",
-    image:
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80",
+
+    image: "/WTP.png",
     featured: false,
   },
   {
@@ -80,12 +77,12 @@ export const PROJECTS: Project[] = [
       "Landing page para a marca premium RE/MAX Collection, segmento de imóveis de luxo.",
     longDescription:
       "Desenvolvimento da landing page para a RE/MAX Collection, marca especializada da rede RE/MAX voltada para o mercado imobiliário de luxo. Design elegante e sofisticado que transmite exclusividade e atendimento premium.",
-    techStack: ["React", "CSS", "JavaScript", "Responsive Design"],
+    techStack: ["React", "CSS", "JavaScript", "Landing Page"],
     category: "web",
     liveUrl: "https://remax-colection.vercel.app/",
-    githubUrl: "https://github.com/creativeimob-tech/remax-colection",
+
     image:
-      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80",
+      "/REMAX.png",
     featured: false,
   },
   {
@@ -97,10 +94,10 @@ export const PROJECTS: Project[] = [
       "Desenvolvimento do site da imobiliária Montreal, empresa do setor imobiliário com atuação em São Paulo. Interface moderna com listagem de imóveis, sistema de busca e formulários de contato otimizados para conversão.",
     techStack: ["React", "CSS", "JavaScript", "Landing Page"],
     category: "web",
-    liveUrl: null,
-    githubUrl: "https://github.com/creativeimob-tech/montreal",
+    liveUrl:"https://www.montrealbusiness.com.br/",
+
     image:
-      "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600&q=80",
+      "/MONTREAL.png",
     featured: false,
   },
   {
@@ -113,26 +110,25 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "CSS", "JavaScript", "UI/UX Design"],
     category: "web",
     liveUrl: "https://moodboard-creative.vercel.app/",
-    githubUrl: "https://github.com/creativeimob-tech/Moodboard-creative",
+
     image:
-      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600&q=80",
+      "/MOODBOARD.png",
     featured: false,
   },
 
   // ── Projeto de Colaboração (Evo Play Learn) ──────────────────────────
   {
     id: "evo-play-learn",
-    title: "Evo Play Learn",
+    title: "HTC - Skills",
     description:
       "Plataforma educacional interativa que combina aprendizado com gamificação.",
     longDescription:
       "Plataforma de educação interativa que une aprendizado e gamificação, incentivando o desenvolvimento através de jogos e atividades dinâmicas. Projeto colaborativo com foco em experiência do usuário e engajamento educacional.",
     techStack: ["React", "CSS", "JavaScript", "Gamificação"],
     category: "web",
-    liveUrl: null,
-    githubUrl: "https://github.com/riqueov/evo-play-learn",
-    image:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80",
+    liveUrl: "https://plataforma-modelo.vercel.app/",
+
+    image: "/HTC.png",
     featured: false,
   },
 
@@ -147,9 +143,9 @@ export const PROJECTS: Project[] = [
     techStack: ["React", "CSS", "JavaScript"],
     category: "web",
     liveUrl: "https://medcorpinovacao.com.br/",
-    githubUrl: "https://github.com/Kaiobasx/medicina-trabalho",
+
     image:
-      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80",
+      "/MEDCORP.png",
     featured: false,
   },
 
@@ -166,7 +162,7 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://casa-nova-mu.vercel.app",
     githubUrl: "https://github.com/Kaiobasx/casa-nova-next",
     image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80",
+      "/CASANOVA.png",
     featured: true,
   },
   {
@@ -181,7 +177,7 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://kaiobasx.github.io/Studio-Beleza/",
     githubUrl: "https://github.com/Kaiobasx/Studio-Beleza",
     image:
-      "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&q=80",
+      "/STUDIOBELEZA.png",
     featured: false,
   },
 
