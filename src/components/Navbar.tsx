@@ -17,15 +17,19 @@ export default function Navbar() {
   }, []);
 
   const toggleMenu = () => {
-    const next = !menuOpen;
-    setMenuOpen(next);
-    document.body.classList.toggle('menu-open', next);
+    setMenuOpen((current) => !current);
   };
 
   const closeMenu = () => {
     setMenuOpen(false);
-    document.body.classList.remove('menu-open');
   };
+
+  useEffect(() => {
+    document.body.classList.toggle('menu-open', menuOpen);
+    return () => {
+      document.body.classList.remove('menu-open');
+    };
+  }, [menuOpen]);
 
   const switchLang = (l: Lang) => setLang(l);
 
@@ -53,7 +57,11 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile nav (fullscreen overlay) */}
-      <nav className="nav-links mobile">
+      <nav className={`nav-links mobile${menuOpen ? ' open' : ''}`}>
+        <button className="nav-close" type="button" aria-label="Fechar menu" onClick={closeMenu}>
+          <span />
+          <span />
+        </button>
         {navItems.map(({ num, label, href }) => (
           <a key={href} href={href} onClick={closeMenu}>
             <span className="num">{num}</span> <span>{label}</span>
