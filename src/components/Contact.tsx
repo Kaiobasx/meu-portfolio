@@ -38,7 +38,7 @@ export default function Contact() {
         </div>
         <div className="contact-socials" data-reveal data-d="3">
           <a href="https://github.com/Kaiobasx" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/kaio-vinicius" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/kaio-oliveira-/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://www.instagram.com/kaiobasx.dev/" target="_blank" rel="noopener">Instagram</a>
           <a href="https://wa.me/5511976277421" target="_blank" rel="noopener">WhatsApp</a>
         </div>

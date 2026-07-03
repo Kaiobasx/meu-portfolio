@@ -439,7 +439,7 @@ export default function PremiumHero() {
               {/* Icons */}
               <div style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}>
                 <SocialLink
-                  href="https://www.linkedin.com/in/kaio-vinicius"
+                  href="https://www.linkedin.com/in/kaio-oliveira-/"
                   label="LinkedIn"
                   icon={<LinkedInIcon />}
                 />
@@ -449,7 +449,7 @@ export default function PremiumHero() {
                   icon={<GitHubIcon />}
                 />
                 <SocialLink
-                  href="mailto:contato@kaiobasx.com"
+                  href="mailto:kaiooliveira528@gmail.com"
                   label="Email"
                   icon={<EmailIcon />}
                   external={false}

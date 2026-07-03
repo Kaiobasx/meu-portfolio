@@ -54,7 +54,7 @@ export default function Hero() {
               </a>
             </div>
             <div className="hero-socials">
-              <a href="https://www.linkedin.com/in/kaio-vinicius" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/kaio-oliveira-/" target="_blank" rel="noopener">LinkedIn</a>
               <a href="https://github.com/Kaiobasx" target="_blank" rel="noopener">GitHub</a>
               <a href="https://www.instagram.com/kaiobasx.dev/" target="_blank" rel="noopener">Instagram</a>
             </div>
