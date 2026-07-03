@@ -173,7 +173,7 @@ export const PROJECTS: Project[] = [
     longDescription:
       "Site institucional desenvolvido para um estúdio de beleza real. Interface profissional voltada para apresentação de serviços, agendamento e contato com clientes.",
     techStack: ["HTML", "CSS", "JavaScript"],
-    category: "web",
+    category: "academic",
     liveUrl: "https://kaiobasx.github.io/Studio-Beleza/",
     githubUrl: "https://github.com/Kaiobasx/Studio-Beleza",
     image:

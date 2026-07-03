@@ -1,80 +1,70 @@
-"use client";
+'use client';
 
-import useReveal from "@/hooks/useReveal";
+import { useEffect, useRef } from 'react';
+import { useI18n } from '@/context/I18nContext';
+import type { I18nKey } from '@/data/i18n';
 
 interface Skill {
-  icon: string;
+  num: string;
   name: string;
-  level: string;
+  catKey: I18nKey;
+  lvl: 1 | 2 | 3;
 }
 
 const SKILLS: Skill[] = [
-  { icon: "⚛️", name: "React", level: "Avançado" },
-  { icon: "▲", name: "Next.js", level: "Avançado" },
-  { icon: "🟦", name: "TypeScript", level: "Intermediário" },
-  { icon: "🟨", name: "JavaScript", level: "Avançado" },
-  { icon: "🎨", name: "CSS / Tailwind", level: "Avançado" },
-  { icon: "☕", name: "Java", level: "Intermediário" },
-  { icon: "🗄️", name: "SQL", level: "Intermediário" },
-  { icon: "🐙", name: "Git / GitHub", level: "Avançado" },
-  { icon: "🚀", name: "Vercel", level: "Intermediário" },
-  { icon: "🔄", name: "N8N", level: "Básico" },
+  { num: '01', name: 'React',          catKey: 'lvl.3', lvl: 3 },
+  { num: '02', name: 'Next.js',        catKey: 'lvl.3', lvl: 3 },
+  { num: '03', name: 'TypeScript',     catKey: 'lvl.2', lvl: 2 },
+  { num: '04', name: 'JavaScript',     catKey: 'lvl.3', lvl: 3 },
+  { num: '05', name: 'CSS / Tailwind', catKey: 'lvl.3', lvl: 3 },
+  { num: '06', name: 'Java',           catKey: 'lvl.2', lvl: 2 },
+  { num: '07', name: 'SQL',            catKey: 'lvl.2', lvl: 2 },
+  { num: '08', name: 'Git / GitHub',   catKey: 'lvl.3', lvl: 3 },
+  { num: '09', name: 'Vercel',         catKey: 'lvl.2', lvl: 2 },
+  { num: '10', name: 'N8N',            catKey: 'lvl.1', lvl: 1 },
 ];
 
-interface SkillCardProps extends Skill {
-  delay: number;
-}
-
-function SkillCard({ icon, name, level, delay }: SkillCardProps) {
-  const ref = useReveal(0.15, delay);
-
-  return (
-    <div className="skill-card reveal" ref={ref}>
-      <span className="skill-icon">{icon}</span>
-      <div className="skill-name">{name}</div>
-      <div className="skill-level">{level}</div>
-    </div>
-  );
-}
-
 export default function Skills() {
-  const headerRef = useReveal();
+  const { t } = useI18n();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const container = sectionRef.current;
+    if (!container) return;
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }),
+      { threshold: 0.1, rootMargin: '0px 0px -6% 0px' }
+    );
+    container.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <section
-      className="skills"
-      id="skills"
-      style={{ background: "var(--bg-primary)", position: "relative" }}
-    >
-      <div className="container">
-        <div className="skills-header reveal" ref={headerRef}>
-          <p className="section-label">Habilidades</p>
-          <h2 className="section-title">Tecnologias &amp; Ferramentas</h2>
-          <p className="section-desc">
-            As principais tecnologias que uso no meu dia a dia para construir
-            produtos digitais de alta qualidade.
-          </p>
+    <section id="skills" ref={sectionRef}>
+      <div className="skills-head">
+        <div>
+          <span className="eyebrow" data-reveal>{t('skills.eyebrow')}</span>
+          <h2 className="section-title" data-reveal data-d="1" style={{ marginTop: '20px' }}>
+            <span>{t('skills.title.a')} </span>
+            <span className="it gold-text">{t('skills.title.b')}</span>
+          </h2>
         </div>
-
-        <div className="skills-grid">
-          {SKILLS.map((skill, i) => (
-            <SkillCard key={skill.name} {...skill} delay={i * 80} />
-          ))}
-        </div>
+        <p data-reveal data-d="2">{t('skills.p')}</p>
       </div>
 
-      {/* ── Shape Divider: Skills → Projects (bg-secondary) ── */}
-      <div className="shape-divider" aria-hidden="true">
-        <svg
-          viewBox="0 0 1440 80"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,40 C240,80 480,0 720,40 C960,80 1200,10 1440,40 L1440,80 L0,80 Z"
-            fill="#131620"
-          />
-        </svg>
+      <div className="skills-list">
+        {SKILLS.map((skill) => (
+          <div key={skill.num} className="skill-row" data-reveal>
+            <span className="skill-num">{skill.num}</span>
+            <span className="skill-name">{skill.name}</span>
+            <span className="skill-cat">{t(skill.catKey)}</span>
+            <div className="skill-meter" data-lvl={skill.lvl}>
+              <i /><i /><i />
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

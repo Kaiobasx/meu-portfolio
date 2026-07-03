@@ -1,83 +1,94 @@
-"use client";
+'use client';
 
-import useReveal from "@/hooks/useReveal";
+import { useEffect, useRef } from 'react';
+import { useI18n } from '@/context/I18nContext';
 
 export default function About() {
-  const imageRef = useReveal();
-  const contentRef = useReveal(0.15, 200);
+  const { t } = useI18n();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const container = sectionRef.current;
+    if (!container) return;
+
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }),
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    );
+    container.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+    const countIO = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target as HTMLElement;
+        const target = parseInt(el.dataset.count || '0', 10);
+        const suffix = el.dataset.suffix || '';
+        let cur = 0;
+        const dur = 1400;
+        const start = performance.now();
+        const step = (now: number) => {
+          const t = Math.min((now - start) / dur, 1);
+          const ease = 1 - Math.pow(1 - t, 3);
+          cur = ease;
+          el.textContent = Math.floor(ease * target) + (t === 1 ? suffix : '');
+          if (t < 1) requestAnimationFrame(step);
+          else el.textContent = target + suffix;
+        };
+        requestAnimationFrame(step);
+        countIO.unobserve(el);
+      }),
+      { threshold: 0.5 }
+    );
+    container.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
+
+    return () => { io.disconnect(); countIO.disconnect(); };
+  }, []);
 
   return (
-    <section
-      className="about"
-      id="about"
-      style={{ background: "var(--bg-secondary)", position: "relative" }}
-    >
-      <div className="container">
-        <div className="about-image reveal" ref={imageRef}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Workspace"
-          />
+    <section id="about" ref={sectionRef}>
+      <div className="about-grid">
+        <div className="about-figure" data-reveal>
+          <div className="frame">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/EU.png" alt="Kaio Vinicius" />
+          </div>
+          <div className="tagchip">
+            <span>{t('about.chip')}</span>
+          </div>
         </div>
 
-        <div className="about-content reveal" ref={contentRef}>
-          <p className="section-label">Sobre mim</p>
-          <h2 className="section-title">
-            Criando soluções digitais com paixão e propósito
+        <div className="about-body">
+          <span className="eyebrow" data-reveal>{t('about.eyebrow')}</span>
+          <h2 className="section-title about-head" data-reveal data-d="1">
+            <span>{t('about.title.a')}</span>
+            <span className="it gold-text"> {t('about.title.b')}</span>
           </h2>
-          <p className="section-desc">
-            Sou desenvolvedor com experiência em criação de interfaces modernas e
-            aplicações web completas. Trabalho com React, Next.js, TypeScript e
-            design responsivo para entregar produtos que encantam os usuários.
-          </p>
-          <p>
-            Quando não estou codando, gosto de estudar novas tecnologias,
-            contribuir em projetos open-source e tomar um bom café. Acredito que
-            bom design é invisível — funciona tão bem que ninguém percebe.
-          </p>
+          <p data-reveal data-d="2">{t('about.p1')}</p>
+          <p data-reveal data-d="3">{t('about.p2')}</p>
 
-          <div className="about-stats">
-            <div className="stat-item">
-              <div className="stat-number">3+</div>
-              <div className="stat-text">Anos de experiência</div>
+          <div className="stats" data-reveal data-d="3">
+            <div className="stat">
+              <div className="num">
+                <span data-count="3" data-suffix="+">3+</span>
+              </div>
+              <div className="lbl">{t('stat.1')}</div>
             </div>
-            <div className="stat-item">
-              <div className="stat-number">15+</div>
-              <div className="stat-text">Projetos entregues</div>
+            <div className="stat">
+              <div className="num">
+                <span data-count="15" data-suffix="+">15+</span>
+              </div>
+              <div className="lbl">{t('stat.2')}</div>
             </div>
-            <div className="stat-item">
-              <div className="stat-number">10+</div>
-              <div className="stat-text">Clientes satisfeitos</div>
+            <div className="stat">
+              <div className="num">
+                <span data-count="10" data-suffix="+">10+</span>
+              </div>
+              <div className="lbl">{t('stat.3')}</div>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* ── Shape Divider: About → Skills (bg-primary) ── */}
-      <div className="shape-divider" aria-hidden="true">
-        <svg
-          viewBox="0 0 1440 110"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,80 C60,30 120,110 180,70 C240,30 300,100 360,60
-               C420,20 480,90 540,55 C600,20 660,85 720,50
-               C780,15 840,80 900,45 C960,10 1020,75 1080,40
-               C1140,5 1200,70 1260,45 C1320,20 1400,65 1440,50
-               L1440,110 L0,110 Z"
-            fill="#0D0F14"
-          />
-          <path
-            d="M0,90 C80,50 160,100 240,75 C320,50 400,95 480,70
-               C560,45 640,90 720,65 C800,40 880,85 960,60
-               C1040,35 1120,80 1200,58 C1280,36 1380,75 1440,62
-               L1440,110 L0,110 Z"
-            fill="#0D0F14"
-            opacity="0.55"
-          />
-        </svg>
       </div>
     </section>
   );

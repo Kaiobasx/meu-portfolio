@@ -1,164 +1,129 @@
-"use client";
+'use client';
 
-import { useRef, useState } from "react";
-import useReveal from "@/hooks/useReveal";
-import { PROJECTS, type Project } from "@/data/projects";
+import { useEffect, useRef, useState } from 'react';
+import { useI18n } from '@/context/I18nContext';
+import type { I18nKey } from '@/data/i18n';
 
-type FilterCategory = "all" | "featured" | "web" | "academic";
+type Cat = 'all' | 'freela' | 'pessoal' | 'acad';
 
-interface ProjectCardProps extends Project {
-  delay: number;
+interface Project {
+  cat: 'freela' | 'pessoal' | 'acad';
+  catKey: I18nKey;
+  img: string;
+  title: string;
+  descKey: I18nKey;
+  tags: string[];
+  demo?: string;
+  code?: string;
 }
 
-function ProjectCard({
-  title,
-  description,
-  techStack,
-  liveUrl,
-  githubUrl,
-  image,
-  category,
-  delay,
-}: ProjectCardProps) {
-  const ref = useReveal<HTMLElement>(0.15, delay);
-  const cardRef = useRef<HTMLElement | null>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centX = rect.width / 2;
-    const centY = rect.height / 2;
-    const rotateX = ((y - centY) / centY) * -4;
-    const rotateY = ((x - centX) / centX) * 4;
-    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-  };
-
-  const handleMouseLeave = () => {
-    if (cardRef.current) cardRef.current.style.transform = "";
-  };
-
-  const categoryLabel: Record<string, string> = {
-    featured: "Destaque",
-    web: "Web",
-    academic: "Acadêmico",
-  };
-
-  return (
-    <article
-      className="project-card reveal"
-      ref={(el) => {
-        ref.current = el;
-        cardRef.current = el;
-      }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className="project-thumb">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={image} alt={title} />
-        <div className="overlay"></div>
-        <span className={`project-badge badge-${category}`}>
-          {categoryLabel[category]}
-        </span>
-      </div>
-      <div className="project-body">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <div className="project-tags">
-          {techStack.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
-        <div className="project-links">
-          {liveUrl && (
-            <a href={liveUrl} target="_blank" rel="noopener noreferrer">
-              <i className="ph ph-globe"></i> Demo
-            </a>
-          )}
-          {githubUrl && (
-            <a href={githubUrl} target="_blank" rel="noopener noreferrer">
-              <i className="ph ph-github-logo"></i> Código
-            </a>
-          )}
-        </div>
-      </div>
-    </article>
-  );
-}
+const PROJECTS: Project[] = [
+  { cat: 'freela',  catKey: 'cat.freela',  img: 'https://kaio-vinicius.vercel.app/JRHX.png',            title: 'JRHX Imobiliária',    descKey: 'pd1',  tags: ['React','CSS','JavaScript','Landing Page'], demo: 'https://jrhx.com.br' },
+  { cat: 'freela',  catKey: 'cat.freela',  img: 'https://kaio-vinicius.vercel.app/MARIAMARTINATTI.png',  title: 'Maria Martinatti',    descKey: 'pd2',  tags: ['React','CSS','JavaScript','Responsive'],  demo: 'https://mariamartinatti.com.br' },
+  { cat: 'freela',  catKey: 'cat.freela',  img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80', title: 'Nitro', descKey: 'pd3', tags: ['React','CSS','SEO','Google Ads'] },
+  { cat: 'freela',  catKey: 'cat.freela',  img: 'https://kaio-vinicius.vercel.app/WTP.png',             title: 'WTP Incorporadora',   descKey: 'pd4',  tags: ['React','CSS','JavaScript','Landing Page'], demo: 'https://wtpincorporadora.com.br/' },
+  { cat: 'freela',  catKey: 'cat.freela',  img: 'https://kaio-vinicius.vercel.app/REMAX.png',           title: 'RE/MAX Collection',   descKey: 'pd5',  tags: ['React','CSS','JavaScript','Landing Page'], demo: 'https://remax-colection.vercel.app/' },
+  { cat: 'freela',  catKey: 'cat.freela',  img: 'https://kaio-vinicius.vercel.app/MONTREAL.png',        title: 'Montreal',            descKey: 'pd6',  tags: ['React','CSS','JavaScript','Landing Page'], demo: 'https://www.montrealbusiness.com.br/' },
+  { cat: 'pessoal', catKey: 'cat.pessoal', img: 'https://kaio-vinicius.vercel.app/MOODBOARD.png',       title: 'Moodboard Creative',  descKey: 'pd7',  tags: ['React','CSS','UI/UX'],                    demo: 'https://moodboard-creative.vercel.app/' },
+  { cat: 'pessoal', catKey: 'cat.pessoal', img: 'https://kaio-vinicius.vercel.app/HTC.png',             title: 'HTC — Skills',        descKey: 'pd8',  tags: ['React','CSS','JavaScript'],               demo: 'https://plataforma-modelo.vercel.app/' },
+  { cat: 'freela',  catKey: 'cat.freela',  img: 'https://kaio-vinicius.vercel.app/MEDCORP.png',         title: 'MedCorp',             descKey: 'pd9',  tags: ['React','CSS','JavaScript'],               demo: 'https://medcorpinovacao.com.br/' },
+  { cat: 'pessoal', catKey: 'cat.pessoal', img: 'https://kaio-vinicius.vercel.app/CASANOVA.png',        title: 'Chá de Casa Nova',    descKey: 'pd10', tags: ['Next.js 15','React 19','TypeScript','Tailwind','N8N'], demo: 'https://casa-nova-mu.vercel.app', code: 'https://github.com/Kaiobasx/casa-nova-next' },
+  { cat: 'acad',  catKey: 'cat.acad',  img: 'https://kaio-vinicius.vercel.app/STUDIOBELEZA.png',    title: 'Studio Beleza',       descKey: 'pd11', tags: ['HTML','CSS','JavaScript'],                demo: 'https://kaiobasx.github.io/Studio-Beleza/', code: 'https://github.com/Kaiobasx/Studio-Beleza' },
+  { cat: 'acad',    catKey: 'cat.acad',    img: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80', title: 'CoronaTrack', descKey: 'pd12', tags: ['Java','Grafos','BFS/DFS'], code: 'https://github.com/Kaiobasx/CoronaTrack' },
+  { cat: 'acad',    catKey: 'cat.acad',    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',    title: 'Java · Rotas Ótimas', descKey: 'pd13', tags: ['Java','Grafos','Dijkstra'], code: 'https://github.com/Kaiobasx/Grafo-Aplica-o-Java-para-Rotas-ADO-N2' },
+];
 
 export default function Projects() {
-  const headerRef = useReveal();
-  const [filter, setFilter] = useState<FilterCategory>("all");
+  const { t } = useI18n();
+  const [filter, setFilter] = useState<Cat>('all');
+  const sectionRef = useRef<HTMLElement>(null);
 
-  const filteredProjects =
-    filter === "all"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.category === filter);
+  useEffect(() => {
+    const container = sectionRef.current;
+    if (!container) return;
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }),
+      { threshold: 0.08, rootMargin: '0px 0px -6% 0px' }
+    );
+    container.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
-  const filters: { key: FilterCategory; label: string }[] = [
-    { key: "all", label: "Todos" },
-    { key: "featured", label: "Destaques" },
-    { key: "web", label: "Web" },
-    { key: "academic", label: "Acadêmico" },
+  const filters: { key: Cat; i18nKey: I18nKey }[] = [
+    { key: 'all',     i18nKey: 'f.all' },
+    { key: 'freela',  i18nKey: 'f.freela' },
+    { key: 'pessoal', i18nKey: 'f.pessoal' },
+    { key: 'acad',    i18nKey: 'f.acad' },
   ];
 
   return (
-    <section
-      className="projects"
-      id="projects"
-      style={{ background: "var(--bg-secondary)", position: "relative" }}
-    >
-      <div className="container">
-        <div className="projects-header reveal" ref={headerRef}>
-          <p className="section-label">Projetos</p>
-          <h2 className="section-title">Trabalhos em Destaque</h2>
-          <p className="section-desc">
-            Projetos reais extraídos do meu GitHub — do front-end à lógica de
-            algoritmos.
-          </p>
+    <section id="projects" ref={sectionRef}>
+      <div className="proj-head">
+        <div>
+          <span className="eyebrow" data-reveal>{t('proj.eyebrow')}</span>
+          <h2 className="section-title" data-reveal data-d="1" style={{ marginTop: '20px' }}>
+            <span>{t('proj.title.a')} </span>
+            <span className="it gold-text">{t('proj.title.b')}</span>
+          </h2>
         </div>
-
-        <div className="projects-filters">
-          {filters.map((f) => (
-            <button
-              key={f.key}
-              className={`filter-btn${filter === f.key ? " active" : ""}`}
-              onClick={() => setFilter(f.key)}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="projects-grid">
-          {filteredProjects.map((project, i) => (
-            <ProjectCard key={project.id} {...project} delay={i * 150} />
-          ))}
-        </div>
+        <p data-reveal data-d="2">{t('proj.p')}</p>
       </div>
 
-      {/* ── Shape Divider: Projects → Contact (bg-primary) ── */}
-      <div className="shape-divider" aria-hidden="true">
-        <svg
-          viewBox="0 0 1440 90"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,50 C160,90 320,10 480,50 C640,90 800,15 960,50
-               C1120,85 1300,20 1440,45 L1440,90 L0,90 Z"
-            fill="#0D0F14"
-          />
-          <path
-            d="M0,65 C200,30 400,80 600,55 C800,30 1000,75 1200,50
-               C1320,35 1400,60 1440,55 L1440,90 L0,90 Z"
-            fill="#0D0F14"
-            opacity="0.5"
-          />
-        </svg>
+      <div className="filters" data-reveal>
+        {filters.map(f => (
+          <button
+            key={f.key}
+            className={filter === f.key ? 'active' : ''}
+            onClick={() => setFilter(f.key)}
+          >
+            {t(f.i18nKey)}
+          </button>
+        ))}
+      </div>
+
+      <div className="proj-grid">
+        {PROJECTS.map((p, i) => {
+          const hidden = filter !== 'all' && p.cat !== filter;
+          const delay = (i % 3) as 0 | 1 | 2;
+          return (
+            <article
+              key={p.title}
+              className={`card${hidden ? ' hide' : ''}`}
+              data-cat={p.cat}
+              data-reveal
+              data-d={delay > 0 ? String(delay) : undefined}
+            >
+              <div className="card-media">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={p.img} alt={p.title} />
+              </div>
+              <div className="card-body">
+                <p className="card-cat">{t(p.catKey)}</p>
+                <h3>{p.title}</h3>
+                <p>{t(p.descKey)}</p>
+                <div className="tags">
+                  {p.tags.map(tag => <span key={tag}>{tag}</span>)}
+                </div>
+                {(p.demo || p.code) && (
+                  <div className="card-links">
+                    {p.demo && (
+                      <a href={p.demo} target="_blank" rel="noopener">
+                        <span>{t('link.demo')}</span><span className="arrow">↗</span>
+                      </a>
+                    )}
+                    {p.code && (
+                      <a href={p.code} target="_blank" rel="noopener">
+                        <span>{t('link.code')}</span><span className="arrow">↗</span>
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );

@@ -1,71 +1,46 @@
-"use client";
+'use client';
 
-import useReveal from "@/hooks/useReveal";
-
-interface SocialLink {
-  label: string;
-  icon: string;
-  url: string;
-}
-
-const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label: "GitHub",
-    icon: "ph ph-github-logo",
-    url: "https://github.com/Kaiobasx",
-  },
-  {
-    label: "LinkedIn",
-    icon: "ph ph-linkedin-logo",
-    url: "https://www.linkedin.com/in/kaio-vinicius",
-  },
-  {
-    label: "Instagram",
-    icon: "ph ph-instagram-logo",
-    url: "https://www.instagram.com/kaiobasx.dev/",
-  },
-  {
-    label: "WhatsApp",
-    icon: "ph ph-whatsapp-logo",
-    url: "https://wa.me/5511976277421",
-  },
-];
+import { useEffect, useRef } from 'react';
+import { useI18n } from '@/context/I18nContext';
 
 export default function Contact() {
-  const ref = useReveal();
+  const { t } = useI18n();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const container = sectionRef.current;
+    if (!container) return;
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }),
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    );
+    container.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <section
-      className="contact"
-      id="contact"
-      style={{ background: "var(--bg-primary)", position: "relative" }}
-    >
-      <div className="container">
-        <div className="contact-wrapper reveal" ref={ref}>
-          <p className="section-label">Contato</p>
-          <h2 className="section-title">Vamos trabalhar juntos?</h2>
-          <p className="section-desc">
-            Estou sempre aberto a novas oportunidades e projetos interessantes.
-            Sinta-se à vontade para entrar em contato!
-          </p>
-
-          <div className="contact-links">
-            {SOCIAL_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-chip"
-              >
-                <i className={`${link.icon} chip-icon`}></i> {link.label}
-              </a>
-            ))}
-          </div>
-
-          <a href="mailto:kaiooliveira528@gmail.com" className="contact-email-btn">
-            <i className="ph ph-envelope-simple"></i> Enviar Email
+    <section id="contact" ref={sectionRef}>
+      <div className="contact-glow" />
+      <div className="contact-inner">
+        <span className="eyebrow center" data-reveal>{t('contact.eyebrow')}</span>
+        <h2 className="section-title" data-reveal data-d="1">
+          <span>{t('contact.title.a')}</span><br />
+          <span className="it gold-text">{t('contact.title.b')}</span>
+        </h2>
+        <p className="lead" data-reveal data-d="2">{t('contact.lead')}</p>
+        <div className="contact-cta" data-reveal data-d="3">
+          <a href="mailto:kaiooliveira528@gmail.com" className="btn btn-gold magnetic">
+            <span>{t('contact.cta')}</span>
+            <span className="arrow">→</span>
           </a>
+        </div>
+        <div className="contact-socials" data-reveal data-d="3">
+          <a href="https://github.com/Kaiobasx" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/kaio-vinicius" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/kaiobasx.dev/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://wa.me/5511976277421" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
     </section>
