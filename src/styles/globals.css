@@ -157,10 +157,13 @@ body.menu-open .nav-burger span:nth-child(2){ bottom: 7px; transform: rotate(-45
 /* ============================================================ HERO */
 #hero { min-height: 100svh; padding: 0; display: flex; align-items: flex-end; overflow: hidden; }
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
-.hero-bg img { width: 100%; height: 120%; object-fit: cover; filter: grayscale(0.35) brightness(0.42) contrast(1.05); transform: scale(1.08); }
+.hero-bg img { width: 100%; height: 120%; object-fit: cover; object-position: center right; filter: grayscale(0.35) brightness(0.42) contrast(1.05); transform: scale(1.08); }
 .hero-bg::after { content: ""; position: absolute; inset: 0; background:
   radial-gradient(120% 90% at 75% 15%, rgba(201,162,75,0.10), transparent 55%),
   linear-gradient(180deg, rgba(8,8,10,0.55) 0%, rgba(8,8,10,0.2) 35%, rgba(8,8,10,0.85) 80%, var(--bg) 100%); }
+@media (max-width: 720px) {
+  .hero-bg img { object-position: 68% center; }
+}
 .hero-inner { position: relative; z-index: 2; width: 100%; padding: 0 var(--pad) clamp(60px, 9vh, 110px); }
 .hero-greet { font-family: var(--serif); font-style: italic; font-size: clamp(20px, 2.6vw, 30px); color: var(--ink-2); margin-bottom: 6px; }
 .hero-title { font-family: var(--serif); font-weight: 600; font-size: clamp(60px, 13.5vw, 230px); line-height: 0.86; letter-spacing: -0.02em; }
